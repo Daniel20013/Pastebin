@@ -2,6 +2,9 @@ package com.example.Pastebin;
 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 @CrossOrigin(origins = "http://127.0.0.1:5500/")
 @RestController
@@ -20,11 +23,28 @@ public class TextController {
 //        return "textTemplate.text";
 //    }
 
-    @GetMapping("/texts")
-    public String getText(Model model) {
-        TextTemplate textTemplate = (TextTemplate) textService.getText();
-        model.addAttribute("myText", textTemplate);
-        return "index.html";
+//    @RequestMapping("/texts")
+//    public String getText(Model model) {
+//        model.addAttribute("myText", textService.getText());
+//        return "textTemplate";
+//    }
+
+//    @ModelAttribute("messages")
+//    public List<TextTemplate> messages() {
+//        return textService.getText();
+//    }
+
+//    @RequestMapping(value = "message", method = RequestMethod.GET)
+//    public ModelAndView messages() {
+//        ModelAndView mav = new ModelAndView("message/list");
+//        mav.addObject("messages", textService.getText());
+//        return mav;
+//    }
+
+    @RequestMapping(value = "message", method = RequestMethod.GET)
+    public String messages(Model model) {
+        model.addAttribute("messages", textService.getText());
+        return "message/list";
     }
 
     @PostMapping
