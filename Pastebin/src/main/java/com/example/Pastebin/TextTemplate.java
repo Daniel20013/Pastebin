@@ -7,11 +7,11 @@ import jakarta.persistence.*;
 public class TextTemplate {
     @Id
     @SequenceGenerator(
-            name = "employee_sequence",
+            name = "text_sequence",
             allocationSize = 1
     )
     @GeneratedValue(
-            generator = "employee_sequence",
+            generator = "text_sequence",
             strategy = GenerationType.SEQUENCE
     )
     private Long id;
