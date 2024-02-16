@@ -6,7 +6,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://127.0.0.1:5500/")
 @RestController
 @RequestMapping(path = "/api/v1/pastebin")
 public class TextController {
@@ -16,38 +15,15 @@ public class TextController {
         this.textService = textService;
     }
 
-//    @RequestMapping("/texts")
-//    public String getText(Model model) {
-//        TextTemplate textTemplate = (TextTemplate) textService.getText();
-//        model.addAttribute("myText", textTemplate);
-//        return "textTemplate.text";
-//    }
-
-//    @RequestMapping("/texts")
-//    public String getText(Model model) {
-//        model.addAttribute("myText", textService.getText());
-//        return "textTemplate";
-//    }
-
-//    @ModelAttribute("messages")
-//    public List<TextTemplate> messages() {
-//        return textService.getText();
-//    }
-
-//    @RequestMapping(value = "message", method = RequestMethod.GET)
-//    public ModelAndView messages() {
-//        ModelAndView mav = new ModelAndView("message/list");
-//        mav.addObject("messages", textService.getText());
-//        return mav;
-//    }
-
-    @RequestMapping(value = "message", method = RequestMethod.GET)
-    public String messages(Model model) {
-        model.addAttribute("messages", textService.getText());
-        return "message/list";
+    @GetMapping("/text")
+    public String getText(Model model) {
+        List<TextTemplate> texts = textService.getText();
+        model.addAttribute("texts", texts);
+        System.out.println("~~~~~~~~~~~~~~~~~  A FOST ACCESAT  ~~~~~~~~~~~~~~~~");
+        return "displayText";
     }
 
-    @PostMapping
+    @PostMapping(path = "/create")
     public void createText(@RequestBody TextTemplate textTemplate) {
         textService.createText(textTemplate);
     }
