@@ -18,21 +18,28 @@ public class TextController {
 
     @GetMapping("/")
     public String getText(Model model) {
-        model.addAttribute("texts", new TextTemplate());
+        model.addAttribute("text", new TextTemplate());
         return "index";
     }
 
     @GetMapping("/text")
     public String displayText(Model model) {
         List<TextTemplate> texts = textService.getText();
-        model.addAttribute("texts", texts);
+        model.addAttribute("text", texts);
         return "displayText";
     }
 
-    @PostMapping("/createText")
-    public String createText(@ModelAttribute(value = "inputText") TextTemplate textTemplate) {
-//        textService.createText(textTemplate);
-        System.out.println(textTemplate + "~~~~~~~~~~~~ A FOST ACCESATA ~~~~~~~~~~~~~~");
-        return "index";
+    @GetMapping("/fullText")
+    public String fullText(@RequestParam Long id, Model model) {
+        TextTemplate textTemplate = textService.getOneText(id);
+        model.addAttribute("fullText", textTemplate);
+        return "fullText";
+    }
+
+    @PostMapping("/")
+    public String createText(@ModelAttribute TextTemplate textTemplate, Model model) {
+        model.addAttribute("text", textTemplate);
+        textService.createText(textTemplate);
+        return "wasCreatedSuccessfully";
     }
 }
