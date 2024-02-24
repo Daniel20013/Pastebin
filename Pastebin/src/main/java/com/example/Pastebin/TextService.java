@@ -17,6 +17,10 @@ public class TextService implements ITextService {
         return textRepository.findAll();
     }
 
+    public TextTemplate getOneText(Long id) {
+        return textRepository.getById(id);
+    }
+
     @Override
     public void createText(TextTemplate textTemplate) {
         validateText(textTemplate.getText());
