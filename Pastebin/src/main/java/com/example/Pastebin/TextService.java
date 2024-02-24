@@ -17,6 +17,7 @@ public class TextService implements ITextService {
         return textRepository.findAll();
     }
 
+    @Override
     public TextTemplate getOneText(Long id) {
         return textRepository.getById(id);
     }
