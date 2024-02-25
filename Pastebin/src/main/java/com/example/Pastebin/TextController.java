@@ -38,8 +38,17 @@ public class TextController {
 
     @PostMapping("/")
     public String createText(@ModelAttribute TextTemplate textTemplate, Model model) {
+        String validationMessage;
+        try {
+            validationMessage = textService.validateText(textTemplate.getText());
+            textService.createText(textTemplate);
+            model.addAttribute("textExista", false);
+        } catch (IllegalStateException e) {
+            validationMessage = e.getMessage();
+            model.addAttribute("textExista", true);
+        }
+        model.addAttribute("validationMessage", validationMessage);
         model.addAttribute("text", textTemplate);
-        textService.createText(textTemplate);
-        return "wasCreatedSuccessfully";
+        return "index";
     }
 }
