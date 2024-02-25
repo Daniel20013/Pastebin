@@ -28,10 +28,12 @@ public class TextService implements ITextService {
         textRepository.save(textTemplate);
     }
 
-    private void validateText(String text) {
+    String validateText(String text) {
         Optional<TextTemplate> textOptional = textRepository.getTextByText(text);
         if (textOptional.isPresent()) {
-            throw new IllegalStateException(String.format("TextTemplate %s alerady exists", text));
+            throw new IllegalStateException(String.format(" %s already exists", text));
+        } else {
+            return "Text saved successfully";
         }
     }
 }
