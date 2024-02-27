@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
+@RequestMapping(path = "/pastebin")
 public class TextController {
     private final TextService textService;
 
@@ -22,10 +23,10 @@ public class TextController {
         return "index";
     }
 
-    @GetMapping("/text")
+    @GetMapping("/texts")
     public String displayText(Model model) {
         List<TextTemplate> texts = textService.getText();
-        model.addAttribute("text", texts);
+        model.addAttribute("texts", texts);
         return "displayText";
     }
 
