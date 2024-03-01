@@ -1,0 +1,44 @@
+.container {
+    background-color: rgb(240, 240, 240);
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    height: 50rem;
+}
+
+.card {
+    position: relative;
+    top: 1%;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+#cardSuccess {
+    position: relative;
+    top: 2%;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+#inputContainer {
+    position: relative;
+    top: 20px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+#homeButton {
+    position: relative;
+    top: 4%;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+#existingButton {
+    position: absolute;
+    top: 30%;
+    right: 1%;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+#tableTexts {
+    position: absolute;
+    top: 40%;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
